@@ -3,6 +3,7 @@ __pycache__
 ablation-db-*
 lightning_logs
 *.csv
+*.log
 
 actual_data
 .DS_Store

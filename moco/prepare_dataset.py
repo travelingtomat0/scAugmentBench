@@ -838,7 +838,7 @@ def prepare_ImmHuman_our(data_root):
     label_key = 'CellType'
 
     # ensure row is gene
-    adata = sc.read_h5ad('/cluster/home/oovcharenko/Olga_Data/ImmHuman.h5ad')
+    adata = sc.read_h5ad('/home/oovcharenko/Olga_Data/ImmHuman.h5ad')
 
     X = sps.csr_matrix(adata.layers['counts'].T)  # gene by cell
 
@@ -856,7 +856,7 @@ def prepare_PBMC_our(data_root):
     label_key = 'CellType'
 
     # ensure row is gene
-    adata = sc.read_h5ad('/cluster/home/oovcharenko/Olga_Data/PBMC.h5ad')
+    adata = sc.read_h5ad('/home/oovcharenko/Olga_Data/PBMC.h5ad')
 
     X = adata.layers['counts'].A.T  # gene by cell
 
@@ -874,7 +874,7 @@ def prepare_Pancreas_our(data_root):
     label_key = 'celltype'
 
     # ensure row is gene
-    adata = sc.read_h5ad('/cluster/home/oovcharenko/Olga_Data/Pancreas.h5ad')
+    adata = sc.read_h5ad('/home/oovcharenko/Olga_Data/Pancreas.h5ad')
 
     X = adata.layers['counts'].A.T  # gene by cell
 
@@ -892,7 +892,7 @@ def prepare_ImmuneAtlas_our(data_root):
     label_key = 'cell_type'
 
     # ensure row is gene
-    adata = sc.read_h5ad('/cluster/home/oovcharenko/Olga_Data/ImmuneAtlas.h5ad')
+    adata = sc.read_h5ad('/home/oovcharenko/Olga_Data/ImmuneAtlas.h5ad')
 
     X = adata.layers['counts'].A.T  # gene by cell
 
@@ -910,7 +910,7 @@ def prepare_MCA_our(data_root):
     label_key = 'CellType'
 
     # ensure row is gene
-    adata = sc.read_h5ad('/cluster/home/oovcharenko/Olga_Data/MCA.h5ad')
+    adata = sc.read_h5ad('/home/oovcharenko/Olga_Data/MCA.h5ad')
 
     X = adata.layers['counts'].A.T  # gene by cell
 
@@ -928,7 +928,7 @@ def prepare_Lung_our(data_root):
     label_key = 'cell_type'
 
     # ensure row is gene
-    adata = sc.read_h5ad('/cluster/home/oovcharenko/Olga_Data/Lung.h5ad')
+    adata = sc.read_h5ad('/home/oovcharenko/Olga_Data/Lung.h5ad')
 
     X = adata.layers['counts'].A.T  # gene by cell
 
