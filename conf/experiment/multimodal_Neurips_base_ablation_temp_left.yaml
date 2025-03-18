@@ -2,7 +2,7 @@
 hydra:
   sweeper:
     params:
-      random_seed: range(20, 21)
+      random_seed: range(20, 22)
       +model: moco
       +data: neurips_cite_multimodal
       +augmentation: clear_pipeline

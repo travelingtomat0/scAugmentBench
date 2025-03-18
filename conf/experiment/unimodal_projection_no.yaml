@@ -4,7 +4,7 @@ hydra:
     params:
       random_seed: range(20, 22)
       +model: barlowtwins, byol, moco, nnclr, simclr, simsiam, vicreg
-      +data: mouse, immune, pbmc, pancreas, lung
+      +data: mouse, immune, lung, pbmc, pancreas, immune_atlas
       +augmentation: clear_pipeline
       model.hidden_dim: 64
       model.training.max_epochs: 100
@@ -15,5 +15,5 @@ hydra:
   job:
     name: ${random_seed}
   sweep:
-    dir: rerun_unimodal_100/
+    dir: unimodal/
     subdir: ${data.dname}/${model.model}/${random_seed}

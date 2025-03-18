@@ -56,7 +56,8 @@ class CheckpointEveryNSteps(pl.Callback):
     def on_train_epoch_end(self, trainer: pl.Trainer, _):
         """ Check if we should save a checkpoint after every train batch """
         epoch = trainer.current_epoch
-        if epoch % self.save_step_frequency == 0:
+        # if epoch % self.save_step_frequency == 0:
+        if epoch == self.save_step_frequency:
             if self.use_modelcheckpoint_filename:
                 filename = trainer.checkpoint_callback.filename
             else:
@@ -83,7 +84,7 @@ def train_model(dataset, model_config, random_seed, batch_size,
     print(model_config)
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    trainer = pl.Trainer(max_epochs=n_epochs, accelerator=device, default_root_dir=ckpt_dir, callbacks=[CheckpointEveryNSteps(save_step_frequency=n_epochs-1)]) # cpu works for smaller tasks!!
+    trainer = pl.Trainer(max_epochs=n_epochs, accelerator=device, default_root_dir=ckpt_dir, callbacks=[CheckpointEveryNSteps(save_step_frequency=n_epochs)]) # cpu works for smaller tasks!!
     logger.info(f".. Model ready. Now train on {device}.")
     
     try:

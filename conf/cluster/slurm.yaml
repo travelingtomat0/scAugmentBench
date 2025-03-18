@@ -4,9 +4,9 @@ defaults:
 
 hydra:
   launcher:
-    partition: gpu-5h
+    partition: gpu-2d
     gpus_per_node: 1
-    tasks_per_node: 12
-    # timeout_min: 120
+    tasks_per_node: 16
+    timeout_min: 1000
     nodes: 1
-    constraint: "3090"
+    # constraint: "6000"

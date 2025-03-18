@@ -131,6 +131,7 @@ def reset_random_seeds(seed):
     torch.use_deterministic_algorithms(True)
     torch.cuda.manual_seed(seed)
     torch.manual_seed(seed)
+    torch.set_float32_matmul_precision('high')
     os.environ["PYTHONHASHSEED"] = str(seed)
     os.environ["PYTHONHASHSEED"] = str(seed)
     _LOGGER.info(f"Set random seed to {seed}")    
