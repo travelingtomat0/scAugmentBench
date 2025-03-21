@@ -32,8 +32,6 @@ logs/
 temperature/
 
 projection/
-unimodal_projection.log
-unimodal_temp.log
 
 qr/
 dsbn/
@@ -41,4 +39,9 @@ dsbn/
 dsbn_try/
 projection copy/
 rerun_unimodal_100/
-unimodal_bc_dsbn.log
+
+*.log
+*.zip
+
+unimodal/
+unimodal_projection/
