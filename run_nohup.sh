@@ -27,12 +27,21 @@
 # nohup python main.py --multirun +exp=qr_big +cluster=slurm >> qr_big.log 2>&1 &
 
 # Augmentations
-nohup python main.py --multirun +aug_exp=bbknn_ablation +cluster=slurm >> bbknn_qr_b2.log 2>&1 &
-nohup python main.py --multirun +aug_exp=combi-bbknn-all +cluster=slurm >> combi_bbknn_qr_b2.log 2>&1 &
-nohup python main.py --multirun +aug_exp=combi-gauss-all +cluster=slurm >> combi_gauss_qr_b2.log 2>&1 &
-nohup python main.py --multirun +aug_exp=combi-mask-all +cluster=slurm >> combi_mask_qr_b2.log 2>&1 &
-nohup python main.py --multirun +aug_exp=combi-swap-all +cluster=slurm >> combi_swap_qr_b2.log 2>&1 &
-nohup python main.py --multirun +aug_exp=gauss_ablation +cluster=slurm >> gauss_ablation.log 2>&1 &
-nohup python main.py --multirun +aug_exp=innerswap_ablation +cluster=slurm >> innerswap_ablation.log 2>&1 &
-nohup python main.py --multirun +aug_exp=mask_ablation +cluster=slurm >> mask_ablation.log 2>&1 &
-nohup python main.py --multirun +aug_exp=mnn_ablation +cluster=slurm >> mnn_ablation.log 2>&1 &
+# nohup python main.py --multirun +aug_exp=bbknn_ablation +cluster=slurm >> bbknn_qr_b2.log 2>&1 &
+# nohup python main.py --multirun +aug_exp=combi-bbknn-all +cluster=slurm >> combi_bbknn_qr_b2.log 2>&1 &
+# nohup python main.py --multirun +aug_exp=combi-gauss-all +cluster=slurm >> combi_gauss_qr_b2.log 2>&1 &
+# nohup python main.py --multirun +aug_exp=combi-mask-all +cluster=slurm >> combi_mask_qr_b2.log 2>&1 &
+# nohup python main.py --multirun +aug_exp=combi-swap-all +cluster=slurm >> combi_swap_qr_b2.log 2>&1 &
+# nohup python main.py --multirun +aug_exp=gauss_ablation +cluster=slurm >> gauss_ablation.log 2>&1 &
+# nohup python main.py --multirun +aug_exp=innerswap_ablation +cluster=slurm >> innerswap_ablation.log 2>&1 &
+# nohup python main.py --multirun +aug_exp=mask_ablation +cluster=slurm >> mask_ablation.log 2>&1 &
+# nohup python main.py --multirun +aug_exp=mnn_ablation +cluster=slurm >> mnn_ablation.log 2>&1 &
+
+# Representations dimensionality
+nohup python main.py --multirun +exp=barlowtwins_ablation +cluster=slurm_5h >> logs_dim_5h/barlowtwins_ablation.log 2>&1 &
+nohup python main.py --multirun +exp=byol_ablation +cluster=slurm_5h >> logs_dim_5h/byol_ablation.log 2>&1 &
+nohup python main.py --multirun +exp=moco_ablation +cluster=slurm_5h >> logs_dim_5h/moco_ablation.log 2>&1 &
+nohup python main.py --multirun +exp=nnclr_ablation +cluster=slurm_5h >> logs_dim_5h/nnclr_ablation.log 2>&1 &
+nohup python main.py --multirun +exp=simclr_ablation +cluster=slurm_5h >> logs_dim_5h/simclr_ablation.log 2>&1 &
+nohup python main.py --multirun +exp=simsiam_ablation +cluster=slurm_5h >> logs_dim_5h/simsiam_ablation.log 2>&1 &
+nohup python main.py --multirun +exp=vicreg_ablation +cluster=slurm_5h >> logs_dim_5h/vicreg_ablation.log 2>&1 &
