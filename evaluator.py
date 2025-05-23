@@ -75,29 +75,31 @@ def evaluate_model(model, adata, dataset, batch_size, num_workers, logger, embed
     logger.info(f"Inferred embedding of shape {embedding.shape}")
     adata.obsm["Embedding"] = embedding
 
-    sc.pp.neighbors(adata, use_rep="Embedding", metric="cosine")
-    sc.tl.umap(adata, min_dist=0.1)
-    sc.pl.umap(adata, color=["CellType", batch_key], legend_fontweight='light') 
-    plt.savefig(umap_plot)
-    
-    try:
-        bm = Benchmarker(
-                    adata,
-                    batch_key=batch_key,
-                    label_key=cell_type_label,
-                    embedding_obsm_keys=["Embedding"],
-                    bio_conservation_metrics=_BIO_METRICS,
-                    batch_correction_metrics=_BATCH_METRICS,
-                    n_jobs=num_workers,
-                )
-        bm.benchmark()
-        a = bm.get_results(False, True)
-        results = a[:1].astype(float).round(4)
-    except Exception as error:
-        results = None
-        logger.info(".. An exception occured while evaluating:", error)
+    return None, None
 
-    return results, embedding
+    # sc.pp.neighbors(adata, use_rep="Embedding", metric="cosine")
+    # sc.tl.umap(adata, min_dist=0.1)
+    # sc.pl.umap(adata, color=["CellType", batch_key], legend_fontweight='light') 
+    # plt.savefig(umap_plot)
+    
+    # try:
+    #     bm = Benchmarker(
+    #                 adata,
+    #                 batch_key=batch_key,
+    #                 label_key=cell_type_label,
+    #                 embedding_obsm_keys=["Embedding"],
+    #                 bio_conservation_metrics=_BIO_METRICS,
+    #                 batch_correction_metrics=_BATCH_METRICS,
+    #                 n_jobs=num_workers,
+    #             )
+    #     bm.benchmark()
+    #     a = bm.get_results(False, True)
+    #     results = a[:1].astype(float).round(4)
+    # except Exception as error:
+    #     results = None
+    #     logger.info(".. An exception occured while evaluating:", error)
+
+    # return results, embedding
 
 def recalculate_results(adata, embedding, num_workers,
                    batch_key="batchlb", cell_type_label="CellType",):

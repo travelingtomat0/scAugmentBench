@@ -45,3 +45,10 @@ dsbn_try/
 *.zip
 repr_dims_5h/
 models/__pycache__/model_utils.cpython-310.pyc
+
+big_data/
+big_data_100/
+big_data_200/
+
+old_runs/
+

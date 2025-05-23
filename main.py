@@ -23,10 +23,14 @@ import numpy as np
 import random
 import lightning as pl
 
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
 
 _LOGGER = logging.getLogger(__name__)
 _celltype_key = "CellType" #cfg["data"]["celltype_key"]
 _batch_key = "batchlb" #cfg["data"]["batch_key"]
+
+# os.environ["CUDA_VISIBLE_DEVICES"] = "3"
 
 
 def load_data(config) -> sc.AnnData:
@@ -218,10 +222,11 @@ def main(cfg: DictConfig):
                                             embedding_save_path=results_dir.joinpath("embedding.npz"),
                                             umap_plot=results_dir.joinpath("plot.png")
                                         )
-        try:
-            results.to_csv(results_dir.joinpath("evaluation_metrics.csv"), index=None)
-        except:
-            _LOGGER.info("Something went wrong with the benchmark.")
+        # try:
+        #     _LOGGER.info(f"{results.to_dict()}")
+        #     results.to_csv(results_dir.joinpath("evaluation_metrics.csv"), index=None)
+        # except:
+        #     _LOGGER.info("Something went wrong with the benchmark.")
     
     elif cfg["data"]["holdout_batch"] is not None:
         _LOGGER.info("Running QR-Mapper-Inference.")
@@ -273,13 +278,13 @@ def main(cfg: DictConfig):
             results2.to_csv(os.path.join(results_dir, "qr-results.csv"))
             
             print(f"MaAVG-F1: {maavg_f1}\nAccuracy: {acc} MaAVG-F1-in: {maavg_f1_in}\nAccuracy-in: {acc_in}")
-            _LOGGER.info(f"Finished Training of the QR-Mapper in {run_time} seconds.")
+            _LOGGER.info(f"Finished Training of the QR-Mapper in {run_time} seconds MaAVG-F1: {maavg_f1}\nAccuracy: {acc} MaAVG-F1-in: {maavg_f1_in}\nAccuracy-in: {acc_in}.")
             exit(0)
 
         results = pd.DataFrame([maavg_f1, acc, run_time], index=["Macro-F1", "Accuracy", "Run-Time"])
         results.to_csv(os.path.join(results_dir, "qr-results.csv"))
         print(f"MaAVG-F1: {maavg_f1}\nAccuracy: {acc}")
-        _LOGGER.info(f"Finished Training of the QR-Mapper in {run_time} seconds.")
+        _LOGGER.info(f"Finished Training of the QR-Mapper in {run_time} seconds MaAVG-F1: {maavg_f1}\nAccuracy: {acc}.")
 
 
 if __name__ == "__main__":

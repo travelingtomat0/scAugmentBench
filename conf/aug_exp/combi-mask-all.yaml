@@ -2,11 +2,11 @@
 hydra:
   sweeper:
     params:
-      random_seed: range(20, 25)
+      random_seed: range(20, 22)
       model.hidden_dim: 64
       model.training.max_epochs: 200
-      +model: vicreg
-      +data: mouse
+      +model: vicreg, simclr, moco
+      +data: mouse, immune
       data.n_hvgs: 4000
       ++model.multimodal: False
       model.predict_projection: False
